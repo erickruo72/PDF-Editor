@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Text Editor</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f9fafb;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        #toolbar {
+            margin-bottom: 15px;
+        }
+
+        #pdf-container {
+            position: relative;
+            width: 900px;
+            border: 1px solid #d1d5db;
+            background: white;
+            padding: 10px;
+        }
+
+        .page {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* TEXT BOX OVERLAYS */
+        .word {
+            position: absolute;
+            border: 1.5px dashed #2563eb;
+            background: transparent;
+            cursor: text;
+            z-index: 10;
+        }
+
+        .word.editing {
+            background: rgba(34, 197, 94, 0.15);
+            border-style: solid;
+            padding: 2px 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>PDF Text Editor</h2>
+
+<div id="toolbar">
+    <input type="file" id="fileInput" accept="application/pdf">
+    <button id="saveBtn">Save Edited PDF</button>
+</div>
+
+<div id="pdf-container"></div>
+
+<!-- PDF.js (STABLE) -->
+<script src="https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.min.js"></script>
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+</script>
+
+<script src="js/editor.js"></script>
+</body>
+</html>
